@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'abcd/index'
+
+  get 'abcd/new'
+
+  get 'abcd/show'
+
+  get 'abcd/edit'
+
   get 'guru/name'
 
   get 'guru/email'
