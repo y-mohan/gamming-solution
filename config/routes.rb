@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'guru/name'
+
+  get 'guru/email'
+
+  get 'guru/password'
+
+  get 'articles/index'
+
+  get 'articles/new'
+
+  get 'articles/show'
+
+  get 'articles/edit'
+
   resources :products
 
 namespace :api do 
