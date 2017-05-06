@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'samplforms/new'
+
+  get 'samplforms/index'
+
+  get 'samplforms/edit'
+
+  get 'samplforms/show'
+
   resources :products
 
 namespace :api do 
