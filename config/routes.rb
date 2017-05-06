@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'india/index'
+
+  get 'india/new'
+
+  get 'india/edit'
+
+  get 'india/show'
+
   resources :products
 
 namespace :api do 
