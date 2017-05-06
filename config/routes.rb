@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'mallela/index'
+
+  get 'mallela/new'
+
+  get 'mallela/edit'
+
+  get 'mallela/show'
+
   get 'india/index'
 
   get 'india/new'
