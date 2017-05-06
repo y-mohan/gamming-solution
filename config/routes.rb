@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'product/name'
+
+  get 'product/brand'
+
+  get 'product/item'
+
+  get 'product/size'
+
   resources :products
 
 namespace :api do 
