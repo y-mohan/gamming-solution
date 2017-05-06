@@ -1,0 +1,46 @@
+<%= form_for @user do |f|%>
+<% if @user.errors.any? %>
+  <% @user.errors.messages.each do |key,msg |%>
+    <ul>
+    <li><%= "#{key} : " + msg.first%></li>
+    </ul>
+  <%end%>
+<%end%>
+<table  class="table table-striped">
+  <tr>
+  <td><%= f.label :name%></td>
+  <td><%= f.text_field :name%></td>
+  </tr>
+  <tr>
+  <td><%= f.label :email%></td>
+  <td><%= f.email_field :email%></td>
+  </tr>
+  <tr>
+  <td><%= f.label :password%></td>
+  <td><%= f.password_field :password%></td>
+  </tr>
+  <tr>
+  <td><%= f.label :confirm_password%></td>
+  <td><%= f.password_field :confirm_password%></td>
+  </tr>
+  <tr>
+  <td><%= f.label :mobile%></td>
+  <td><%= f.text_field :mobile%></td>
+  </tr>
+  <tr>
+  <td><%= f.label :status%></td>
+  <td><%= f.check_box :status%></td>
+  </tr>
+  <%= f.fields_for :image do | image |%>
+     <tr>
+     <td><%= image.label :photo%></td>
+     <td><%= image.file_field :photo%></td>
+     </tr>
+  <%end%>
+    <tr>
+  <td><%= f.submit "SignUp"%></td>
+  </tr>
+</table>
+<%end%>
+
+<%= link_to "<<back", users_path%>
