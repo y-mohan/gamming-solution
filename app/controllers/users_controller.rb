@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: [:sign_in, :signup, :new, :create]
   def index
   	@users =  User.all
+   # authorize! :manage, @users
   end
 
   def new
@@ -22,12 +23,14 @@ class UsersController < ApplicationController
     @user = User.find params[:id]
   end
   def update
-    @user = User.find params[:id]
+     @user = User.find params[:id]
+    # authorize! :update, @user
     if @user.update(user_params)
        redirect_to users_path
        else
        render :edit 
     end
+    
   end 
   def show
     @user = User.find params[:id]

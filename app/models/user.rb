@@ -5,15 +5,21 @@ class User < ApplicationRecord
 	validates :confirm_password , presence: true
 	validates :mobile, presence: true, numericality: true
   has_one :image 
+  has_and_belongs_to_many :roles
   accepts_nested_attributes_for :image
     before_save :encrypt_password
     before_save :check_name
     before_validation :verify_password
+#scope :admin?, -> {true if self.email == "admin@gmail.com"}
+  def admin?
+     self.roles.pluck(:name).include?("admin")
+  end
 def check_name
   if name.blank?
     self.name="unknow"
   end
 end
+
     def encrypt_password
        self.password = Digest::MD5.hexdigest(password)
        self.confirm_password = Digest::MD5.hexdigest(confirm_password)
