@@ -45,7 +45,8 @@ class UsersController < ApplicationController
       if @user
           session[:user_id] = @user.id
           flash[:notice] = "Successfully logged in!"
-          redirect_to user_path(@user)
+          #redirect_to user_path(@user)
+          redirect_to products_path
         else
           flash[:notice] = "Either email or password is wrong!"
           redirect_to sign_in_users_path
