@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'product/name'
+
+  get 'product/brand'
+
+  get 'product/item'
+
+  get 'product/size'
+
   resources :products
 get 'auth/:provider/callback', to: 'users#facebook'
 namespace :api do 
