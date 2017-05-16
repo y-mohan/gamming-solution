@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user, only: [:sign_in, :signup, :new, :create]
+  #skip_before_action :authenticate_user, only: [:sign_in, :signup, :new, :create, :facebook]
   def index
   	@users =  User.all
    # authorize! :manage, @users
@@ -12,13 +12,18 @@ class UsersController < ApplicationController
   def create 
   	@user = User.new(user_params)
   	if @user.save(validate: false)
-       SendEmailMailer.welcome(@user).deliver_now!
+       #SendEmailMailer.welcome(@user).deliver_now!
        redirect_to users_path
    else
    	render :new
   	end
   end
+  def facebook
+    user = User.omniauth(env['omniauth.auth'])
+    session[:user_id] = user.id
+    redirect_to products_path
 
+  end
   def edit
     @user = User.find params[:id]
   end

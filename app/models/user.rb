@@ -20,14 +20,33 @@ def check_name
   end
 end
 
+def self.omniauth(auth)
+    #where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
+      byebug
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.email = auth.info.email
+      user.profile_image = auth.info.image
+      user.token = auth.credentials.token
+      user.expires_at = Time.at(auth.credentials.expires_at)
+      user.save(validate: false)
+    end
+  end
+
     def encrypt_password
+      unless password.nil?
        self.password = Digest::MD5.hexdigest(password)
        self.confirm_password = Digest::MD5.hexdigest(confirm_password)
+      end 
     end
     def verify_password
-     	if password != confirm_password
-           errors.add(:base, "password & confirm_password are not equal!" )
-    	end
+      unless password.nil? 
+     	  if password != confirm_password
+             errors.add(:base, "password & confirm_password are not equal!" )
+    	  end
+      end
     end
 	def self.authenticate(email, password)
 		if @user = User.where(email: email, password: Digest::MD5.hexdigest(password)).last
