@@ -1,0 +1,2 @@
+class Jai < ApplicationRecord
+end

@@ -1,5 +1,21 @@
 Rails.application.routes.draw do
 
+  get 'mallela/index'
+
+  get 'mallela/new'
+
+  get 'mallela/edit'
+
+  get 'mallela/show'
+
+  get 'india/index'
+
+  get 'india/new'
+
+  get 'india/edit'
+
+  get 'india/show'
+
   resources :products
 get 'auth/:provider/callback', to: 'users#facebook'
 namespace :api do 
