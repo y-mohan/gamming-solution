@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :products
-
+get 'auth/:provider/callback', to: 'users#facebook'
 namespace :api do 
   resources :users, except: [:new, :edit]
 end

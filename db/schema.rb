@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170509030955) do
+ActiveRecord::Schema.define(version: 20170513044037) do
 
   create_table "images", force: :cascade do |t|
     t.datetime "created_at",         null: false
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(version: 20170509030955) do
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
+  create_table "sports", force: :cascade do |t|
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -56,6 +63,11 @@ ActiveRecord::Schema.define(version: 20170509030955) do
     t.boolean  "status"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "profile_image"
+    t.string   "token"
+    t.datetime "expires_at"
   end
 
 end
