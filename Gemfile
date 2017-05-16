@@ -13,7 +13,7 @@ gem 'pg'
 gem 'cancan'
 gem 'omniauth-facebook'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
 gem 'execjs'
 gem 'therubyracer'
 # Use Puma as the app server

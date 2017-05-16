@@ -19,13 +19,11 @@ class Api::UsersController < ApplicationController
   def destroy 
      @user = User.find params[:id]
      respond_to do | format |
-     @user.destroy 
-    format.json {render json: "Deleted successfully\n"}
-    end
+       @user.destroy 
+        format.json {render json: "Deleted successfully\n"}
+      end
      # redirect_to users_path
-  
-     end
-end
+    end
 #def edit
  #   @user = User.find params[:id]
   # format.json {render json: @user}
@@ -44,10 +42,10 @@ end
     end
   end 
 end
-	         private
-           	def user_params
-		       params.require(:user).permit!
-	        end
+  private
+  def user_params
+	  params.require(:user).permit!
+	end
 end
 
 
