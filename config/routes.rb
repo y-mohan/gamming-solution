@@ -1,5 +1,27 @@
 Rails.application.routes.draw do
 
+  get 'abcd/index'
+
+  get 'abcd/new'
+
+  get 'abcd/show'
+
+  get 'abcd/edit'
+
+  get 'guru/name'
+
+  get 'guru/email'
+
+  get 'guru/password'
+
+  get 'articles/index'
+
+  get 'articles/new'
+
+  get 'articles/show'
+
+  get 'articles/edit'
+
   resources :products
 get 'auth/:provider/callback', to: 'users#facebook'
 namespace :api do 
