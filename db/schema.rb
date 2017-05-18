@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513044037) do
+ActiveRecord::Schema.define(version: 20170518025526) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "carts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_carts_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_carts_on_user_id", using: :btree
+  end
 
   create_table "images", force: :cascade do |t|
     t.datetime "created_at",         null: false
@@ -21,8 +33,8 @@ ActiveRecord::Schema.define(version: 20170513044037) do
     t.datetime "photo_updated_at"
     t.integer  "user_id"
     t.integer  "product_id"
-    t.index ["product_id"], name: "index_images_on_product_id"
-    t.index ["user_id"], name: "index_images_on_user_id"
+    t.index ["product_id"], name: "index_images_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_images_on_user_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -43,8 +55,8 @@ ActiveRecord::Schema.define(version: 20170513044037) do
   create_table "roles_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
-    t.index ["role_id"], name: "index_roles_users_on_role_id"
-    t.index ["user_id"], name: "index_roles_users_on_user_id"
+    t.index ["role_id"], name: "index_roles_users_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_roles_users_on_user_id", using: :btree
   end
 
   create_table "sports", force: :cascade do |t|
@@ -70,4 +82,6 @@ ActiveRecord::Schema.define(version: 20170513044037) do
     t.datetime "expires_at"
   end
 
+  add_foreign_key "carts", "products"
+  add_foreign_key "carts", "users"
 end

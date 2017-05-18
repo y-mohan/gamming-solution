@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
      end
   end
   def current_user
-     User.first 
   	if session[:user_id] 
         User.find session[:user_id]
     else 

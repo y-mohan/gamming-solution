@@ -1,0 +1,29 @@
+<div class="container">
+<table class="table table-striped">
+	<tr>
+	    <th>Images</th>
+		<th>Name</th>
+		<th>Brand</th>
+		<th>Price</th>
+		<th>Size</th>
+		</tr>
+<% @product.each do | i | %>
+	<tr>  
+	  <td>
+	  <% unless i.images.blank? %>
+	    <% i.images.each do | image |%>
+          <%= image_tag image.photo(:thumb)%>
+	    <%end%>
+	  <%end%>
+	  </td>
+      <td><%= i.name %></td>
+      <td><%= i.brand %></td>
+      <td><%= i.prize %></td>
+      <td><%= i.size %></td>
+</tr>
+<%end%>
+</table>
+</div>
+<p><%= link_to "Continue Shopping", products_path%></p>
+<p align = "right"><%= "Total cart value : #{@product.collect(&:prize).map{|p| p.to_i}.inject(:+)}"%></p>
+<p align = "right"><%= link_to "Buy"%></p>
