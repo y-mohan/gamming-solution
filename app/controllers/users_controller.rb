@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: [:sign_in, :signup, :new, :create, :facebook, :forget_password, :recover_password]
-
+   include MoveFromSessionToCart
   def index
   	@users =  User.all
    # authorize! :manage, @users
@@ -50,6 +50,7 @@ class UsersController < ApplicationController
       @user = User.authenticate(params[:email], params[:password])
       if @user
           session[:user_id] = @user.id
+          add_items_to_cart(@user)
           flash[:notice] = "Successfully logged in!"
           #redirect_to user_path(@user)
           redirect_to products_path
