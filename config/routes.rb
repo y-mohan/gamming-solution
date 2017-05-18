@@ -10,6 +10,8 @@ end
        get 'sign_in'
        post 'signup'
        delete 'logout'
+       get 'forget_password'
+       post 'recover_password'
   	end
   end
   root to: "products#index" 
