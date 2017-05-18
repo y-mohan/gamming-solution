@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user, only: [:sign_in, :signup, :new, :create, :facebook, :forget_password, :recover_password]
+
   def index
   	@users =  User.all
    # authorize! :manage, @users
