@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  #skip_before_action :authenticate_user, only: [:sign_in, :signup, :new, :create, :facebook]
+  skip_before_action :authenticate_user, only: [:sign_in, :signup, :new, :create, :facebook, :forget_password, :recover_password]
   def index
   	@users =  User.all
    # authorize! :manage, @users
@@ -60,6 +60,17 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     redirect_to sign_in_users_path
+  end
+  def recover_password
+    @user = User.where(email: params[:email]).last
+    if @user
+        @user.update({password: params[:password], confirm_password: params[:confirm_password]})
+        flash[:notice] = "New password has been set Successfully, ty login!"
+         redirect_to root_path
+       else
+        flash[:notice] = "User not found with given email id"
+        redirect_to root_path
+    end
   end
   private 
   def user_params
