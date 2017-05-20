@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'export_in_xml'
-  s.version     = '0.0.1'
+  s.version     = '0.0.2'
   s.date        = Date.today
   s.summary     = "exports record in xml format"
   s.description = "A simple hello world gem"

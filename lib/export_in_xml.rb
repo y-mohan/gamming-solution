@@ -1,4 +1,5 @@
 class ExportInXml
+
   def self.in_xml
     folder_path = "#{Rails.root}/public/XML"
     FileUtil.mkdir_p folder_path
@@ -9,4 +10,5 @@ class ExportInXml
       end
     end
   end
+
 end
