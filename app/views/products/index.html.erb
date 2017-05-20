@@ -1,7 +1,12 @@
 <% if user_signed_in?%>
   |<%= link_to "Add Product", new_product_path if can? :create, @products %>
 <%end%>
-
+<% if current_user %>
+<% cart_itmes_count = Cart.where(user: current_user).count%>
+<p><%= link_to "items added to cart : #{cart_itmes_count}", carts_path%></p>
+<%else%>
+<p align = "right"><%= link_to "items added to cart : #{session[:cart_items].nil? ? 0 : session[:cart_items].count}", carts_path%></p>
+<%end%>
 <!--%= @users.inspect %-->
 <div class="container">
 <table class="table table-striped">
@@ -25,7 +30,7 @@
       <td><%= i.brand %></td>
       <td><%= i.prize %></td>
       <td><%= i.size %></td>
-    
+      <td><%= link_to "+cart", add_to_cart_carts_path(product_id: i.id)%></td>
 <%end%>
 </table>
 </div>
