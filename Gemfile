@@ -9,6 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
 gem 'paperclip'
+gem 'export_in_xml'
 gem 'pg'
 gem 'cancan'
 gem 'omniauth-facebook'
