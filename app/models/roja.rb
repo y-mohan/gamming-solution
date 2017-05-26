@@ -1,0 +1,2 @@
+class Roja < ApplicationRecord
+end
